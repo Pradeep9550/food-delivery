@@ -21,6 +21,7 @@ function Nav() {
     const handleLogOut = async () => {
         try {
             const result = await axios.get(`${serverUrl}/api/auth/signout`, { withCredentials: true })
+            console.log(result.data, " auth/signout")
             dispatch(setUserData(null))
         } catch (error) {
             console.log(error)
@@ -30,6 +31,7 @@ function Nav() {
     const handleSearchItems=async () => {
       try {
         const result=await axios.get(`${serverUrl}/api/item/search-items?query=${query}&city=${currentCity}`,{withCredentials:true})
+        console.log(result.data , "search-items?")
     dispatch(setSearchItems(result.data))
       } catch (error) {
         console.log(error)

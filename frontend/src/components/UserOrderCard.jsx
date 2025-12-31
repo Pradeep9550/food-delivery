@@ -20,6 +20,7 @@ function UserOrderCard({ data }) {
     const handleRating = async (itemId, rating) => {
         try {
             const result = await axios.post(`${serverUrl}/api/item/rating`, { itemId, rating }, { withCredentials: true })
+            console.log(result.data, "rating")
             setSelectedRating(prev => ({
                 ...prev, [itemId]: rating
             }))

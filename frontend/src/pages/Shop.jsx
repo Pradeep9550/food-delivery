@@ -15,6 +15,7 @@ function Shop() {
     const handleShop=async () => {
         try {
            const result=await axios.get(`${serverUrl}/api/item/get-by-shop/${shopId}`,{withCredentials:true}) 
+           console.log(result.data, "item/get-by-shop")
            setShop(result.data.shop)
            setItems(result.data.items)
         } catch (error) {

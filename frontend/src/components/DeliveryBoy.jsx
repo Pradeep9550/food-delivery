@@ -56,6 +56,7 @@ const totalEarning=todayDeliveries.reduce((sum,d)=>sum + d.count*ratePerDelivery
   const getAssignments=async () => {
     try {
       const result=await axios.get(`${serverUrl}/api/order/get-assignments`,{withCredentials:true})
+      console.log(result.data, " get-assignments")
       
       setAvailableAssignments(result.data)
     } catch (error) {
@@ -66,6 +67,7 @@ const totalEarning=todayDeliveries.reduce((sum,d)=>sum + d.count*ratePerDelivery
   const getCurrentOrder=async () => {
      try {
       const result=await axios.get(`${serverUrl}/api/order/get-current-order`,{withCredentials:true})
+      console.log(result.data, "get-current-order")
     setCurrentOrder(result.data)
     } catch (error) {
       console.log(error)
@@ -76,7 +78,7 @@ const totalEarning=todayDeliveries.reduce((sum,d)=>sum + d.count*ratePerDelivery
   const acceptOrder=async (assignmentId) => {
     try {
       const result=await axios.get(`${serverUrl}/api/order/accept-order/${assignmentId}`,{withCredentials:true})
-    console.log(result.data)
+    console.log(result.data, "order/accept-order")
     await getCurrentOrder()
     } catch (error) {
       console.log(error)
@@ -98,6 +100,7 @@ const totalEarning=todayDeliveries.reduce((sum,d)=>sum + d.count*ratePerDelivery
       const result=await axios.post(`${serverUrl}/api/order/send-delivery-otp`,{
         orderId:currentOrder._id,shopOrderId:currentOrder.shopOrder._id
       },{withCredentials:true})
+      console.log(result.data, "send-delivery-otp")
       setLoading(false)
        setShowOtpBox(true)
     console.log(result.data)
@@ -112,7 +115,7 @@ const totalEarning=todayDeliveries.reduce((sum,d)=>sum + d.count*ratePerDelivery
       const result=await axios.post(`${serverUrl}/api/order/verify-delivery-otp`,{
         orderId:currentOrder._id,shopOrderId:currentOrder.shopOrder._id,otp
       },{withCredentials:true})
-    console.log(result.data)
+    console.log(result.data, "verify-delivery-otp")
     setMessage(result.data.message)
     location.reload()
     } catch (error) {
@@ -125,7 +128,7 @@ const totalEarning=todayDeliveries.reduce((sum,d)=>sum + d.count*ratePerDelivery
     
     try {
       const result=await axios.get(`${serverUrl}/api/order/get-today-deliveries`,{withCredentials:true})
-    console.log(result.data)
+    console.log(result.data, "get-today-deliveries")
    setTodayDeliveries(result.data)
     } catch (error) {
       console.log(error)

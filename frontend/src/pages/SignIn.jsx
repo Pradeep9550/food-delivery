@@ -29,6 +29,7 @@ function SignIn() {
             const result=await axios.post(`${serverUrl}/api/auth/signin`,{
                 email,password
             },{withCredentials:true})
+            console.log(result.data, "signin")
            dispatch(setUserData(result.data))
             setErr("")
             setLoading(false)

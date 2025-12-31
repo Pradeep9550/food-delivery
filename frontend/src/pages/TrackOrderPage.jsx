@@ -16,6 +16,7 @@ function TrackOrderPage() {
     const handleGetOrder = async () => {
         try {
             const result = await axios.get(`${serverUrl}/api/order/get-order-by-id/${orderId}`, { withCredentials: true })
+            console.log(result.data, "get-order-by-id")
             setCurrentOrder(result.data)
         } catch (error) {
             console.log(error)

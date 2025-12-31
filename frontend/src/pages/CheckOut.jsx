@@ -85,6 +85,7 @@ function CheckOut() {
         totalAmount:AmountWithDeliveryFee,
         cartItems
       },{withCredentials:true})
+      console.log(result.data, " place-order")
 
       if(paymentMethod=="cod"){
       dispatch(addMyOrder(result.data))
@@ -115,6 +116,7 @@ const openRazorpayWindow=(orderId,razorOrder)=>{
       razorpay_payment_id:response.razorpay_payment_id,
       orderId
     },{withCredentials:true})
+    console.log(result.data, " verify-payment")
         dispatch(addMyOrder(result.data))
       navigate("/order-placed")
   } catch (error) {

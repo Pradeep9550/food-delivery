@@ -52,6 +52,7 @@ function EditItem() {
                 formData.append("image", backendImage)
             }
             const result = await axios.post(`${serverUrl}/api/item/edit-item/${itemId}`, formData, { withCredentials: true })
+            console.log(result,data, "edit-item")
             dispatch(setMyShopData(result.data))
             setLoading(false)
             navigate("/")

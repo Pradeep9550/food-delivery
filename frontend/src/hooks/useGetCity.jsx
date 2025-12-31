@@ -16,7 +16,7 @@ navigator.geolocation.getCurrentPosition(async (position)=>{
     const longitude=position.coords.longitude
     dispatch(setLocation({lat:latitude,lon:longitude}))
     const result=await axios.get(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&format=json&apiKey=${apiKey}`)
-  console.log(result.data)
+  console.log(result.data,"api.geoapify.com")
     dispatch(setCurrentCity(result?.data?.results[0].city||result?.data?.results[0].county
 ))
     dispatch(setCurrentState(result?.data?.results[0].state))

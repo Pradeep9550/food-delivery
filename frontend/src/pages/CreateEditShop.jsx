@@ -40,6 +40,7 @@ function CreateEditShop() {
             formData.append("image",backendImage)
            }
            const result=await axios.post(`${serverUrl}/api/shop/create-edit`,formData,{withCredentials:true})
+           console.log(result.data, "create-edit")
            dispatch(setMyShopData(result.data))
           setLoading(false)
           navigate("/")

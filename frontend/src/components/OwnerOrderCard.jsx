@@ -12,6 +12,7 @@ const dispatch=useDispatch()
     const handleUpdateStatus=async (orderId,shopId,status) => {
         try {
             const result=await axios.post(`${serverUrl}/api/order/update-status/${orderId}/${shopId}`,{status},{withCredentials:true})
+            console.log(result.data, " order/update-status")
              dispatch(updateOrderStatus({orderId,shopId,status}))
              setAvailableBoys(result.data.availableBoys)
              console.log(result.data)

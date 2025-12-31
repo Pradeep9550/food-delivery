@@ -39,6 +39,7 @@ function App() {
 
   useEffect(() => {
     const socketInstance = io(serverUrl, { withCredentials: true });
+    console.log(socketInstance, "socketInstance")
     dispatch(setSocket(socketInstance));
     socketInstance.on("connect", () => {
       if (userData) {
