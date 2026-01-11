@@ -17,7 +17,7 @@ dotenv.config()
 const app = express()
 const server = http.createServer(app)
 
-const FRONTEND_URL = "https://food-delivery-cyan-two.vercel.app"
+const FRONTEND_URL = "https://food-delivery-nextjs-blond.vercel.app"
 
 // Socket.io CORS
 const io = new Server(server, {
